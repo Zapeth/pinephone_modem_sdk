@@ -7,7 +7,8 @@ YOCTO_PATH:=$(CURRENT_PATH)/yocto
 # Number of threads to use when compiling LK
 NUM_THREADS?=12
 # Cross compile
-CROSS_COMPILE:=$(CURRENT_PATH)/tools/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-
+#CROSS_COMPILE:=$(CURRENT_PATH)/tools/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-
+CROSS_COMPILE:=arm-none-eabi-
 $(shell mkdir -p target)
 
 export ARCH=arm

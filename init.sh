@@ -9,7 +9,7 @@ echo "Get the source for the bootloader"
 if [ ! -d "quectel_lk" ]
 then
     echo "Cloning LK repository"
-    git clone https://github.com/Biktorgj/quectel_lk.git
+    git clone https://github.com/Biktorgj/quectel_lk.git --depth 1
 else
     echo "Pulling latest changes from LK"
     cd quectel_lk && \
@@ -21,9 +21,9 @@ echo "Fetching Yocto"
 if [ ! -d "yocto" ]
 then
     echo "Cloning Yocto repository from the Yocto Project"
-    git clone git://git.yoctoproject.org/poky yocto && \
+    git clone git://git.yoctoproject.org/poky --depth 1 --branch yocto-3.4 yocto && \
     cd yocto && \
-    git checkout tags/yocto-3.4 -b my-yocto-3.4
+    git switch --create my-yocto-3.4
     cd $BASE_PATH
 else
     echo "Yocto is already there"
@@ -33,7 +33,7 @@ echo "Get meta-qcom fork from github"
 if [ ! -d "yocto/meta-qcom" ]
 then
     echo "Cloning meta-qcom repository"
-    git clone -b $YOCTOBRANCH https://github.com/Biktorgj/meta-qcom.git yocto/meta-qcom
+    git clone -b $YOCTOBRANCH https://github.com/Biktorgj/meta-qcom.git --depth 1 yocto/meta-qcom
 else
     echo "Pulling latest changes from the kernel"
     cd yocto/meta-qcom && \
@@ -45,14 +45,14 @@ echo "Fetching meta-python2 from OpenEmbedded"
 if [ ! -d "yocto/meta-python2" ]
 then
     echo "Adding meta-python2"
-    git clone -b $YOCTOBRANCH git://git.openembedded.org/meta-python2 yocto/meta-python2
+    git clone -b $YOCTOBRANCH git://git.openembedded.org/meta-python2 --depth 1 yocto/meta-python2
 fi
 
 echo "Fetching meta-openembedded (to provide support to meta-python2)"
 if [ ! -d "yocto/meta-openembedded" ]
 then
     echo "Adding meta-oe"
-   git clone -b $YOCTOBRANCH https://github.com/openembedded/meta-openembedded.git yocto/meta-openembedded
+   git clone -b $YOCTOBRANCH https://github.com/openembedded/meta-openembedded.git --depth 1 yocto/meta-openembedded
 fi
 
 echo "Getting the ARM toolchain to be able to compile LK"
