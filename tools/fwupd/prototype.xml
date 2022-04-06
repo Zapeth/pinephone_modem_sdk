@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="firmware">
+  <id>%%FWID%%</id>
+  <branch>%%FWBRANCH%%</branch>
+  <name>%%FWNAME%%</name>
+  <name_variant_suffix>%%FWSUFFIX%%</name_variant_suffix>
+  <summary>%%FWSUMMARY%%</summary>
+  <description>
+    <p>%%FWDESCRIPTION%%</p>
+  </description>
+  <provides>
+   %%SUBDEVS%%</provides>
+  <url type="homepage">%%URL%%</url>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>%%LICENSE%%</project_license>
+  <categories>
+  %%CATEGORIES%%</categories>
+<custom>
+    <value key="LVFS::Distributor">community</value>
+    <value key="LVFS::VersionFormat">triplet</value>
+    <value key="LVFS::UpdateProtocol">com.google.fastboot</value>
+</custom>
+  <releases>
+    <release urgency="high" version="%%RELNAME%%" date="%%DATE%%" install_duration="1800">
+      <checksum type="sha1" filename="%%RELFILE%%" target="content">%%SHA1SUM%%</checksum>
+      <checksum type="sha256" filename="%%RELFILE%%" target="content">%%SHA256SUM%%</checksum>
+      <description>
+        <p>This release brings the following fixes and improvements:</p>
+        <ul>
+            %%CHANGELOG%%</ul>
+      </description>
+      <url type="source">https://github.com/Biktorgj/pinephone_modem_sdk/tree/honister/licenses</url>
+      <issues>
+        <issue type="cve">CVE-2021-31698</issue>
+      </issues>
+    </release>
+  </releases>
+  <requires>
+    <id compare="ge" version="1.7.6">org.freedesktop.fwupd</id>
+    <hardware>adad873f-33d3-5477-bd5e-0870eca37444</hardware>
+  </requires>
+  <keywords>
+   %%KEYWORDS%%</keywords>
+</component>

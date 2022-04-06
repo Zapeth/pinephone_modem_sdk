@@ -8,6 +8,10 @@ These are all the base commands that appear in Quectel's AT Command Manual (Vers
 - AT+<cmd>=? Checks if the command exists
 - AT+<cmd>? Prints the values for a specific command
 
+To connect to the serial terminal with local echo and automatic LF trimming, you can use `sudo picocom --echo --omap ignlf /dev/ttyUSB2`.
+
+Alternatively, you can use mmcli to run a command non-interactively: `sudo mmcli -m any --command='AT+QMBNCFG="list"'`
+
 ### Notes:
 Handled by can be
  * DSP: Handled by the ADSP firmware with no interaction from the userspace
@@ -185,7 +189,7 @@ Implemented can be
 | AT+QFUMOCFG | +QFUMOCFG | Userspace  |  Dummy |
 | AT+QGDCNT | Packet Data Counter | DSP | Yes |
 | AT+QGPSCFG[4] | +QGPSCFG | Userspace  |  Dummy |
-| AT+QGMR | Get ADSP firmware version | DSP | Yes |
+| AT+QGMR[7] | Get ADSP firmware version | DSP | Yes |
 | AT+QHUP | Hang up Call with a Specific Release Cause | DSP | Yes |
 | AT+QIIC[3] | Read and Write Codec via IIC | Userspace+DSP | No |
 | AT+QINDCFG | URC Indication Configuration | DSP | Yes |
@@ -304,7 +308,10 @@ Implemented can be
 | AT+EN_CAT | Enable Custom Alert Tone (local dialing indication generation) | Userspace | Yes |
 | AT+DIS_CAT | Disable Custom Alert Tone | Userspace | Yes |
 | AT+GETSWREV | Report OpenQTI version | Userspace | Yes |
-
+| AT+GETFWBRANCH | Get firmware bramch (fwupd) | Userspace | Yes |
+| AT+DMESG | Dump kernel log via serial | Userspace | Yes |
+| AT+OQLOG | Dump OpenQTI log via serial | Userspace | Yes |
+| AT+GETADSPVER | Show ADSP firmware version | Userspace | Yes |
 [1]: Diag port is hardwired from LK to the userspace by the firmware. If GPIOs are available in your platform it'll just work(tm), disabling it will probably not work though
 
 [2]: FOTA functionality is completely removed in this firmware
@@ -316,3 +323,5 @@ Implemented can be
 [5]: Userspace ignores QSCLK config.
 
 [6]: For this to correctly work you'll still have to go through Quectel's USB configuration guide, and it's unknown if it fully works or not. Help would be appreciated
+
+[7]: QGMR has been replaced in this firmware to report the firmware version instead of the ADSP version, so fwupd doesn't need to query different commands depending if you're running stock or this one
