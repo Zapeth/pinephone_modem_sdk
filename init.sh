@@ -21,9 +21,9 @@ echo "Fetching Yocto"
 if [ ! -d "yocto" ]
 then
     echo "Cloning Yocto repository from the Yocto Project"
-    git clone git://git.yoctoproject.org/poky --depth 1 --branch yocto-3.4 yocto && \
+    git clone git://git.yoctoproject.org/poky --depth 1 --branch yocto-3.4.3 yocto && \
     cd yocto && \
-    git switch --create my-yocto-3.4
+    git switch --create my-yocto-3.4.3
     cd $BASE_PATH
 else
     echo "Yocto is already there"
