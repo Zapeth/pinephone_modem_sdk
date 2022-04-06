@@ -1,8 +1,8 @@
 
 ### HOW TO BUILD YOUR OWN FIRMWARE
 
-1. Make sure you have these packages preinstalled in your host:
-    * gcc make patch python3 python3-pip wget diffstat chrpath rpcgen lz4 zstd cross-arm-none-eabi-gcc
+1. Make sure you have these packages preinstalled in your host (glibc, musl wont work):
+    * `gcc make patch python3 python3-pip wget diffstat chrpath rpcsvc-proto lz4 zstd cross-arm-none-eabi-gcc`
 2. Make sure you have at least 50Gb of available space
 3. Do at least a quick read of Yocto's Project Quick build doc: http://docs.yoctoproject.org/brief-yoctoprojectqs/index.html
 4. Clone this repository in your computer
