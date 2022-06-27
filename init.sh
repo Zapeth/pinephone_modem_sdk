@@ -1,6 +1,7 @@
 #!/bin/bash
 BASE_PATH=`pwd`
 
+#YOCTOBRANCH="kirkstone-4.0.1"
 YOCTOBRANCH="kirkstone"
 
 mkdir -p target
@@ -9,7 +10,7 @@ echo "1. Fetching Yocto"
 if [ ! -d "yocto" ]
 then
     echo "--> Cloning Yocto repository from the Yocto Project"
-    git clone -b $YOCTOBRANCH git://git.yoctoproject.org/poky yocto
+    git clone -b $YOCTOBRANCH --depth 1 git://git.yoctoproject.org/poky yocto
 else
     echo "--> Updating yocto..."
     cd yocto && \
@@ -21,7 +22,7 @@ echo "2. Get meta-qcom layer"
 if [ ! -d "yocto/meta-qcom" ]
 then
     echo "--> Cloning meta-qcom repository"
-    git clone -b $YOCTOBRANCH https://github.com/Biktorgj/meta-qcom.git yocto/meta-qcom
+    git clone -b $YOCTOBRANCH --depth 1 https://github.com/Biktorgj/meta-qcom.git yocto/meta-qcom
 else
     echo "--> Updating meta-qcom layer..."
     cd yocto/meta-qcom && \
@@ -33,7 +34,7 @@ echo "3. Get meta-openembedded layer"
 if [ ! -d "yocto/meta-openembedded" ]
 then
     echo "--> Cloning meta-openembedded repository"
-    git clone -b $YOCTOBRANCH https://github.com/openembedded/meta-openembedded.git yocto/meta-openembedded
+    git clone -b $YOCTOBRANCH --depth 1 https://github.com/openembedded/meta-openembedded.git yocto/meta-openembedded
 else
     echo "--> Updating meta-openembedded layer..."
     cd yocto/meta-openembedded && \
