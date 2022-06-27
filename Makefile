@@ -162,7 +162,7 @@ package:
 
 meta_log:
 	echo "Changelog for $(VERSION)" > $(CURRENT_PATH)/target/changelog.log
-	@nano $(CURRENT_PATH)/target/changelog.log 
+	@${EDITOR} $(CURRENT_PATH)/target/changelog.log 
 
 zip_file: 
 	@cp $(CURRENT_PATH)/tools/fwupd/partition_nand.xml $(CURRENT_PATH)/target && \
