@@ -1,7 +1,7 @@
 #!/bin/bash
 BASE_PATH=`pwd`
 
-YOCTOBRANCH="mickledore"
+YOCTOBRANCH="scarthgap"
 
 mkdir -p target
 
