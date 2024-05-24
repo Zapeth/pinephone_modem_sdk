@@ -1,0 +1,5 @@
+RECIPE NAME: linuxmdm
+VERSION: 1.0+git
+LICENSE: GPL-2.0-only
+FILES: mdm9607-mtp.dtb zImage--1.0+git0+b57311ecc6-poky-mdm9607-20240518065529.bin mkbootimg modules--1.0+git0+b57311ecc6-poky-mdm9607-20240518065529.tgz dtb.img boot--1.0+git0+b57311ecc6-poky-mdm9607-20240518065529.img
+
