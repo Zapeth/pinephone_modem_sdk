@@ -94,7 +94,7 @@ root_fs:
 	cp $(CURRENT_PATH)/tools/config/poky/rootfs_${MACHINE}.conf $(YOCTO_PATH)/build/conf/local.conf && \
 	cd $(YOCTO_PATH) && source $(YOCTO_PATH)/oe-init-build-env && \
 	bitbake core-image-minimal && \
-	cp $(YOCTO_PATH)/build/tmp/deploy/images/${MACHINE}/core-image-minimal-${MACHINE}.ubi $(CURRENT_PATH)/target/rootfs-${MACHINE}.ubi && \
+	cp $(YOCTO_PATH)/build/tmp/deploy/images/${MACHINE}/core-image-minimal-${MACHINE}.rootfs.ubi $(CURRENT_PATH)/target/rootfs-${MACHINE}.ubi && \
 	cp $(YOCTO_PATH)/build/tmp/deploy/images/${MACHINE}/boot-${MACHINE}.img $(CURRENT_PATH)/target
 
 # Build kernel + recovery filesystem via Bitbake
@@ -104,14 +104,14 @@ recovery_fs:
 	@cp $(CURRENT_PATH)/tools/config/poky/recovery.conf $(YOCTO_PATH)/build/conf/local.conf
 	@cd $(YOCTO_PATH) && source $(YOCTO_PATH)/oe-init-build-env && \
 	bitbake core-image-minimal && \
-	cp $(YOCTO_PATH)/build/tmp/deploy/images/${MACHINE}/core-image-minimal-${MACHINE}.ubi $(CURRENT_PATH)/target/recoveryfs.ubi && \
+	cp $(YOCTO_PATH)/build/tmp/deploy/images/${MACHINE}/core-image-minimal-${MACHINE}.rootfs.ubi $(CURRENT_PATH)/target/recoveryfs.ubi && \
 	cp $(YOCTO_PATH)/build/tmp/deploy/images/${MACHINE}/boot-${MACHINE}.img $(CURRENT_PATH)/target/recovery.img
 
 
 rootfs_ramdisk:
 	@echo "Building rootfs as a ramdisk only image..."
 	@${YOCTO_PATH}/build/tmp/deploy/images/${MACHINE}/mkbootimg --kernel ${YOCTO_PATH}/build/tmp/deploy/images/${MACHINE}/zImage \
-              --ramdisk ${YOCTO_PATH}/build/tmp/deploy/images/${MACHINE}/core-image-minimal-${MACHINE}.ext3.gz \
+              --ramdisk ${YOCTO_PATH}/build/tmp/deploy/images/${MACHINE}/core-image-minimal-${MACHINE}.rootfs.ext3.gz \
               --output ${CURRENT_PATH}/target/boot-rootfs.img \
               --pagesize 2048 \
               --base 0x80000000 \
@@ -122,7 +122,7 @@ rootfs_ramdisk:
 recovery_ramdisk:
 	@echo "Building recoveryfs as a ramdisk only image..."
 	@${YOCTO_PATH}/build/tmp/deploy/images/${MACHINE}/mkbootimg --kernel ${YOCTO_PATH}/build/tmp/deploy/images/${MACHINE}/zImage \
-              --ramdisk ${YOCTO_PATH}/build/tmp/deploy/images/${MACHINE}/core-image-minimal-${MACHINE}.cpio.gz \
+              --ramdisk ${YOCTO_PATH}/build/tmp/deploy/images/${MACHINE}/core-image-minimal-${MACHINE}.rootfs.cpio.gz \
               --output ${CURRENT_PATH}/target/boot-recovery.img \
               --pagesize 2048 \
               --base 0x80000000 \
