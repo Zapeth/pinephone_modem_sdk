@@ -313,6 +313,24 @@ Implemented can be
 | AT+DMESG | Dump kernel log via serial | Userspace | Yes |
 | AT+OQLOG | Dump OpenQTI log via serial | Userspace | Yes |
 | AT+GETADSPVER | Show ADSP firmware version | Userspace | Yes |
+| | | | |
+| AT+IS_CUSTOM | | | |
+| AT+REBOOTDO | | | |
+| AT+SETLOGDBG | | | |
+| AT+SETLOGNFO | | | |
+| AT+SIMUSMS | | | |
+| AT+SIMUNOTIF | | | |
+| AT+EN_USBSUSPEND | | | |
+| AT+DIS_USBSUSPEND | | | |
+| AT+RESETAUDPA | | | |
+| AT+RECON | | | |
+| AT+RECOFF | | | |
+| AT+WIPESMS | | | |
+| AT+QCFG="secbootstat" | | | |
+| AT+SEND_SAMPLE_CB | | | |
+| AT+SEND_RANDOM_CB | | | |
+| AT+SEND_MULTIPART_CB | | | |
+
   
 [1]: Diag port is hardwired from LK to the userspace by the firmware. If GPIOs are available in your platform it'll just work(tm), disabling it will probably not work though
 
